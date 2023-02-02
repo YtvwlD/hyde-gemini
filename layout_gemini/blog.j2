@@ -1,0 +1,28 @@
+{% extends "base.j2" %}
+
+{% block main_gemini -%}
+## {{ resource.meta.title }}
+Published: {{ resource.meta.created.strftime('%a, %d %b %Y') }}
+
+{% if resource.meta.tags %}
+Tags:
+{% for tag in resource.meta.tags %}
+=> {{ content_url('blog/tags/'~tag~'.html') }} {{ tag }}
+{% endfor %}
+
+{% endif %}
+{% if resource.next_by_time -%}
+=> {{ content_url(resource.next_by_time.url) }} Previous post: {{ resource.next_by_time.meta.title }}
+{# linebreak #}
+{%- endif %}
+{% if resource.prev_by_time -%}
+=> {{ content_url(resource.prev_by_time.url) }} Next post: {{ resource.prev_by_time.meta.title }}
+{# linebreak #}
+{%- endif %}
+
+{% filter md2gemini -%}
+{% mark post -%}
+{% block post -%}{%- endblock %}
+{%- endmark %}
+{%- endfilter %}
+{%- endblock %}

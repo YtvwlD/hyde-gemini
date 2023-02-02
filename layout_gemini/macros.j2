@@ -1,0 +1,29 @@
+{% macro render_excerpt(res, class=None) %}
+{% refer to res.url as post %}
+=> {{ content_url(res.url) }} {{ res.meta.title }}
+{{ post.excerpt|html2gemini }}
+Published: {{ res.meta.created.strftime('%a, %d %b %Y') }}
+----------------------------------------------------------------------
+{% endmacro %}
+
+{% macro render_nav(menu, cls=None) -%}
+{% if menu -%}
+{% for item in menu -%}
+{% if item.url in resource.url or resource.url == "/index.html" -%}
+{# linebreak #}
+
+=> {{ content_url(item.url) }} {{ item.name }}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+{%- endmacro %}
+
+{% macro img(caption) %}
+{% if "[" in caption -%}
+=> {{ caller() }} Image:
+{{ caption }}
+
+{%- else -%}
+=> {{ caller() }} Image: {{ caption }}
+{%- endif %}
+{% endmacro %}
