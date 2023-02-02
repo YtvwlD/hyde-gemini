@@ -1,0 +1,3 @@
+*.pyc
+hyde_gemini.egg-info/
+.mypy_cache/
