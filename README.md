@@ -2,6 +2,7 @@
 
 Serve your [Hyde](https://hyde.github.io/) site over
 [Gemini](https://gemini.circumlunar.space/).
+(This is primarily made possible by [md2gemini](https://github.com/makeworld-the-better-one/md2gemini), yay.)
 
 ## Installation
 

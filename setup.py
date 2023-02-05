@@ -79,6 +79,8 @@ setup(
     install_requires=[
         'hyde >= 0.9.0',
         'commando',
+        'beautifulsoup4',
+        "md2gemini",
     ],
 
     # To provide executable scripts, use entry points in preference to the
